@@ -16,7 +16,8 @@ def scrape_java_heavy_site(profile_id: str) -> Optional[Dict[str, str]]:
     if not token:
         raise ValueError("BROWSERLESS_TOKEN environment variable is required")
     
-    endpoint = f"wss://chrome.browserless.io/playwright?token={token}"
+    # Updated endpoint: Use the modern production URL with /chromium/ for Playwright
+    endpoint = f"wss://production-sfo.browserless.io/chromium/playwright?token={token}"
     
     with sync_playwright() as p:
         print("Connecting to remote browser...")
